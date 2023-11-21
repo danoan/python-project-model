@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_PATH="${SCRIPT_PATH%quick-notes*}quick-notes"
+PROJECT_PATH="$(cd "${SCRIPT_PATH}" && cd ../.. && pwd)"
+PROJECT_NAME="$(basename "${PROJECT_PATH}")"
 
 INPUT_FOLDER="${SCRIPT_PATH}/input"
 OUTPUT_FOLDER="${SCRIPT_PATH}/output"
