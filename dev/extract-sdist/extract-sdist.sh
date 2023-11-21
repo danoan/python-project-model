@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
 SCRIPT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_PATH="${SCRIPT_PATH%quick-notes*}quick-notes"
+PROJECT_PATH="$(cd "${SCRIPT_PATH}" && cd ../.. && pwd)"
+PROJECT_NAME="$(basename "${PROJECT_PATH}")"
 
 OUTPUT_FOLDER="${SCRIPT_PATH}/output"
 mkdir -p "${OUTPUT_FOLDER}"
@@ -18,6 +19,6 @@ mkdir -p "${EXTRACT_FOLDER}"
 
 pyproject-build --outdir "${DIST_FOLDER}" .
 
-tar -xf ${DIST_FOLDER}/quick-notes-*.tar.gz -C "${EXTRACT_FOLDER}"
+tar -xf ${DIST_FOLDER}/${PROJECT_NAME}-*.tar.gz -C "${EXTRACT_FOLDER}"
 
 popd >/dev/null

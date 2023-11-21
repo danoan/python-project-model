@@ -1,7 +1,11 @@
+:heavy_exclamation_mark: This repository is based on a copy of [quick-notesv1.0](https://github.com/danoan/quick-notes).
+Its only purpose is to serve as a model of a functional python project with 
+continuous integration set.
+
 # Getting started with quick-notes
 
 Markdown dialect with support to metadata and toml serialization. [Read the
-docs](https://danoan.github.io/quick-notes).
+docs](https://danoan.github.io/python-project-model).
 
 ## Features
 
