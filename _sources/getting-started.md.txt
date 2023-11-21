@@ -5,7 +5,7 @@ continuous integration set.
 # Getting started with quick-notes
 
 Markdown dialect with support to metadata and toml serialization. [Read the
-docs](https://danoan.github.io/quick-notes).
+docs](https://danoan.github.io/python-project-model).
 
 ## Features
 
