@@ -9,7 +9,7 @@ on:
 jobs:
   build-wheels:
     name: Build wheels on ${{matrix.os.name}}
-    runs-on: ${{matrix.os}}
+    runs-on: ${{matrix.os.name}}
     permissions:
       contents: write
     strategy:
