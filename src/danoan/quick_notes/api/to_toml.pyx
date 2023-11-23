@@ -17,7 +17,7 @@ class _MarkdownQuickNoteToToml(Transformer):
         (i,) = i
         return int(i)
 
-    def value(self, v) -> str:
+    def value(self, v) -> Union[str,int]:
         (v,) = v
         return v
 

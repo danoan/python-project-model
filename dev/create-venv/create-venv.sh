@@ -13,6 +13,8 @@ set -e
 pushd "${PROJECT_PATH}" >/dev/null
 
 trap "echo 'Aborted!'" err
+
+./dev/clean/clean.sh
 python3.8 -m venv .venv
 
 source .venv/bin/activate
