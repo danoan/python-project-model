@@ -9,4 +9,5 @@ docs/Makefile
 docs/_build
 docs/make.bat
 docs/reference
-
+src/danoan/quick_notes/**/*.c
+src/danoan/quick_notes/**/*.so

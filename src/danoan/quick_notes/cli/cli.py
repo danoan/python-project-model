@@ -1,4 +1,6 @@
-from danoan.quick_notes.api import to_markdown, to_toml
+import danoan.quick_notes.api.to_toml as to_toml
+import danoan.quick_notes.api.to_markdown as to_markdown
+
 from danoan.quick_notes.api.model import QuickNoteList
 
 from danoan.quick_notes.cli.model import QuickNote

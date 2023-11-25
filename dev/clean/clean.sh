@@ -10,11 +10,15 @@ mkdir -p "${OUTPUT_FOLDER}"
 
 pushd "${PROJECT_PATH}" >/dev/null
 
+shopt -s globstar
+
 rm -rf ${PROJECT_PATH}/dev/**/output
 rm -rf ${PROJECT_PATH}/build
 
 rm -rf ${PROJECT_PATH}/**/__pycache__
 rm -rf "${PROJECT_PATH}/.tox"
 rm -rf ${PROJECT_PATH}/**/*.egg-info
+
+rm -rf ${PROJECT_PATH}/**/*.c
 
 popd >/dev/null
