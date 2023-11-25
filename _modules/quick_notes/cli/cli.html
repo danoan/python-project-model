@@ -80,7 +80,9 @@
            <div itemprop="articleBody">
              
   <h1>Source code for quick_notes.cli.cli</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">danoan.quick_notes.api</span> <span class="kn">import</span> <span class="n">to_markdown</span><span class="p">,</span> <span class="n">to_toml</span>
+<span></span><span class="kn">import</span> <span class="nn">danoan.quick_notes.api.to_toml</span> <span class="k">as</span> <span class="nn">to_toml</span>
+<span class="kn">import</span> <span class="nn">danoan.quick_notes.api.to_markdown</span> <span class="k">as</span> <span class="nn">to_markdown</span>
+
 <span class="kn">from</span> <span class="nn">danoan.quick_notes.api.model</span> <span class="kn">import</span> <span class="n">QuickNoteList</span>
 
 <span class="kn">from</span> <span class="nn">danoan.quick_notes.cli.model</span> <span class="kn">import</span> <span class="n">QuickNote</span>
