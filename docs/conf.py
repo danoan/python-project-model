@@ -18,25 +18,24 @@ sys.path.insert(0, source_folder)
 
 # Tell sphinx the package version
 
-PACKAGE_VERSION = metadata.version("quick-notes")
+PACKAGE_VERSION = metadata.version("toml-dataclass")
 version = release = PACKAGE_VERSION
 
 # Import read the docs theme
 
-project = "quick-notes"
-copyright = "2023 Daniel Martins Antunes"
-author = "Daniel Martins Antunes"
+project = 'toml-dataclass'
+copyright = '2023, Daniel Martins Antunes'
+author = 'Daniel Martins Antunes'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     "sphinx.ext.autodoc",  # Collect docstrings
-    "sphinx.ext.autosummary",  # Collect docstrings
     "sphinx.ext.autodoc.typehints",  # Use typehints
     "sphinx.ext.napoleon",  # NumPy and Google docstring format
     "sphinx.ext.viewcode",  # Source code link at function, class, module documentation
-    "sphinx_rtd_theme",  # Read the docs theme
+    "sphinx_rtd_theme",  # Read the docs theme,
     "myst_parser"
 ]
 
@@ -47,8 +46,8 @@ source_suffix = {
 
 autodoc_typehints = "both"
 
-templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+templates_path = ['_templates']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
 # -- Options for HTML output -------------------------------------------------

@@ -1,2 +1,2 @@
-graft src/danoan/quick_notes/api/templates
-include src/danoan/quick_notes/api/*.pyx
+graft src/danoan
+include src/danoan/*.pyx

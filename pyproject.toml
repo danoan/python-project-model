@@ -3,9 +3,9 @@ requires = ["setuptools","cython"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "quick-notes"
-version = "1.0"
-description = "Markdown dialect with support to metadata and toml serialization"
+name = "toml-dataclass"
+version = "0.1.0"
+description = "Interchangeable representation between toml and Python dataclass"
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE.txt" }
@@ -17,25 +17,20 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: Implementation :: CPython",
   "Programming Language :: Python :: Implementation :: PyPy",
 ]
-dependencies = ["dataclasses", "jinja2", "typing_extensions", "importlib_resources", "lark", "toml_dataclass @ http://pypi-server.barriguinhas.fr/packages/toml_dataclass-0.1.0-py3-none-any.whl#md5=002285ded5b7e2b5ad1301015f874c70"] 
+dependencies = ["dataclasses", "toml","typing_extensions"] 
 
 [project.urls]
-Documentation = "https://github.com/danoan/quick-notes#readme"
-Issues = "https://github.com/danoan/quick-notes/issues"
-Source = "https://github.com/danoan/quick-notes"
-
-[project.scripts]
-quick-notes = "danoan.quick_notes.cli.cli:main"
+Documentation = "https://github.com/danoan/toml-dataclass#readme"
+Issues = "https://github.com/danoan/toml-dataclass/issues"
+Source = "https://github.com/danoan/toml-dataclass"
 
 
 # -------------------- build backend --------------------
-[tools.setuptools]
-include-package-data = true
-
-
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["danoan*"]
@@ -51,7 +46,7 @@ minversion = "6.0"
 addopts = "--cov --strict-markers" 
 xfail_strict = true
 testpaths = [
-    "test"
+    "tests"
 ]
 pythonpath = [
 "test" # Needed in order to import conftest.py in test modules
@@ -68,25 +63,24 @@ pythonpath = [
 # coverage.exceptions.DataError: Can't combine line data with arc data
 branch = false  
 source = [
-    "danoan.quick_notes"
+    "danoan"
 ]
 
 [tool.coverage.paths]
 source = [
-  "src/danoan/quick_notes",
+  "src/danoan",
+  "*/site-packages/danoan"
 ]
 
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
-omit = [
-  "src/danoan/quick_notes/cli.py"
-]
+omit = []
 
 
 # -------------------- code formatting --------------------
 [tool.black]
-line-length = 79
+line-length = 100
 
 
 # -------------------- type checking --------------------
@@ -98,7 +92,6 @@ pretty = true
 namespace_packages = true
 check_untyped_defs = true
 ignore_missing_imports = true # libraries without py.typed marker raises an error if this is set to false
-mypy_path = "src:test" # Such that conftest is imported correctly in test files without errors
-explicit_package_bases = true # To solve import conflicts of mypy
+mypy_path = "test" # Such that conftest is imported correctly in test files without errors
 
 
