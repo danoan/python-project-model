@@ -36,7 +36,7 @@ extensions = [
     "sphinx.ext.napoleon",  # NumPy and Google docstring format
     "sphinx.ext.viewcode",  # Source code link at function, class, module documentation
     "sphinx_rtd_theme",  # Read the docs theme,
-    "myst_parser"
+    "myst_parser"  # Markdown flavour. Allow type-hints constructions.
 ]
 
 source_suffix = {
