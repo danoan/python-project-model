@@ -1,36 +1,38 @@
-.. quick-notes documentation master file, created by
-   sphinx-quickstart on Sat Dec 31 12:29:51 2022.
+.. toml-dataclass documentation master file, created by
+   sphinx-quickstart on Sun Jan  1 16:30:58 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to quick-notes' documentation!
-=======================================
+Welcome to toml-dataclass's documentation!
+==========================================
 
-Markdown dialect with metadata support and toml serialization.
+Toml and Python Dataclass serialization.
 
 Start here
-==========
+================
 .. toctree::
    :maxdepth: 1
 
    getting-started
 
+
 How-to guides
 =============
+
 .. toctree::
    :maxdepth: 1
 
-   how-to/how-to-create-markdown-quick-notes
-   how-to/exporting-quick-notes-to-toml
-   how-to/using-the-quick-notes-cli
+   how-to/task-manager
 
+    
 Reference guides
 ================
 
 .. toctree::
    :maxdepth: 2
-   
-   api
+
+   reference/toml_dataclass
+
 
 Explanation
 ===========

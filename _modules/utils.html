@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Overview: module code &mdash; toml-dataclass 0.1.0 documentation</title>
+  <title>utils &mdash; toml-dataclass 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=a3d76245" />
@@ -69,7 +69,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Overview: module code</li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">utils</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -78,9 +79,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="utils.html">utils</a></li>
-</ul>
+  <h1>Source code for utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
+
+
+<div class="viewcode-block" id="title">
+<a class="viewcode-back" href="../reference/utils.html#utils.title">[docs]</a>
+<span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">border</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">border</span><span class="o">*</span><span class="n">width</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">title</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">text</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">width</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">title</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">border</span><span class="o">*</span><span class="n">width</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">dedent</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></div>
+
+</pre></div>
 
            </div>
           </div>
