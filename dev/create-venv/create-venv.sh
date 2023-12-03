@@ -21,6 +21,6 @@ source .venv/bin/activate
 
 pip install --upgrade pip
 pip install -e .
-pip install build tox
+pip install build tox twine
 
 popd >/dev/null
