@@ -9,16 +9,16 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
     - uses: ./.github/workflows/multiple-test-suite.yml
-    - uses: ./.github/workflows/build-documentation.yml 
-    - uses: ./.github/workflows/build-package.yml
-    - uses: actions/download-artifact@v3
-      with: 
-        name: artifact 
-        path: ./dist/
-    - uses: pypa/gh-action-pypi-publish@v1.5.0
-      with: 
-        user: __token__
-        password: ${{ secrets.PYPI_API_TOKEN }}
+    # - uses: ./.github/workflows/build-documentation.yml 
+    # - uses: ./.github/workflows/build-package.yml
+    # - uses: actions/download-artifact@v3
+    #   with: 
+    #     name: artifact 
+    #     path: ./dist/
+    # - uses: pypa/gh-action-pypi-publish@v1.5.0
+    #   with: 
+    #     user: __token__
+    #     password: ${{ secrets.PYPI_API_TOKEN }}
 
