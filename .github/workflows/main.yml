@@ -40,4 +40,8 @@ jobs:
       contents: write
     needs: [test-suite]
     uses: ./.github/workflows/build-documentation.yml
+  publish-package:    
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [test-suite, build-documentation]
+    uses: ./.github/workflows/publish-package.yml
 
