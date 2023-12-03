@@ -7,18 +7,28 @@ on:
     types: [published]
 
 jobs:
+  test-suite:
+    uses: ./.github/workflows/multiple-test-suite.yml
+  build-documentation:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/build-documentation.yml 
+  build-package:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/build-package.yml
+    needs: [test-suite]
   publish:
     runs-on: ubuntu-latest
+    needs: [build-package,build-documentation]
     steps:
-    - uses: ./.github/workflows/multiple-test-suite.yml
-    # - uses: ./.github/workflows/build-documentation.yml 
-    # - uses: ./.github/workflows/build-package.yml
-    # - uses: actions/download-artifact@v3
-    #   with: 
-    #     name: artifact 
-    #     path: ./dist/
-    # - uses: pypa/gh-action-pypi-publish@v1.5.0
-    #   with: 
-    #     user: __token__
-    #     password: ${{ secrets.PYPI_API_TOKEN }}
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: ./dist/
+      - uses: pypa/gh-action-pypi-publish@v1.5.0
+        with:
+          repository_url: https://test.pypi.org/legacy/
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
 

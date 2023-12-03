@@ -24,12 +24,10 @@ permissions:
 
 jobs:
   test-suite:
-    steps:
-      - uses: ./.github/workflows/multiple-test-suite.yml
+    uses: ./.github/workflows/multiple-test-suite.yml
   build-documentation:
     permissions:
       contents: write
     needs: [test-suite]
-    steps:
-      - uses: ./.github/workflows/build-documentation.yml
+    uses: ./.github/workflows/build-documentation.yml
 
