@@ -1,103 +1,143 @@
-:heavy_exclamation_mark: This repository is based on a copy of [quick-notesv1.0](https://github.com/danoan/quick-notes).
+:heavy_exclamation_mark: This repository is based on a copy of [toml-dataclassv0.1](https://github.com/danoan/toml-dataclass).
 Its only purpose is to serve as a model of a functional python project with 
 continuous integration set.
 
-# Getting started with quick-notes
+# Getting started with toml_dataclass
 
-Markdown dialect with support to metadata and toml serialization. [Read the
-docs](https://danoan.github.io/python-project-model).
+Toml and Python Dataclass serialization.
 
 ## Features
 
-- Markdown with metadata.
-- Markdown <--> toml.
-- CLI to generate and validate .md and .toml quick-notes.
+- Preserve the in-memory representation of Python dataclasses
 
-## What is a quick-note?
+## Examples
 
-A quick-note is a markdown document labeled with a set of metadata and that can
-be exported to toml format.
+### Creating a dataclass with support to toml serialization.
 
-## Why quick-note 
+```python
+>>> from danoan.toml_dataclass import TomlDataClassIO
+>>> from dataclasses import dataclass
 
-- Programmatically update of markdown documents.
-- General purpose toml format.
+>>> @dataclass
+... class Plugin(TomlDataClassIO):
+...    name: str
+...    version: str
+...    description: str
 
 
-### Markdown quick-note 
-
-A markdown quick-note is a markdown text wrapped within special
-markdown comments starting with `<!--BEGIN-->` and ending with
-`<!--END-->`. 
-
-Here is the `ingredients.md` file.
+>>> jpg_plugin = Plugin("image-jpg", "1.0", "Conversion functions to jpg type.")
+>>> with open("jpg-plugin.toml", "w") as fw:
+...     jpg_plugin.write(fw)
 
 ```
-<!--BEGIN id=0 date="2022-12-30T09:07:33.934408" -->
-# 2022-12-30T09:07
-I should remember to buy:
 
-- Apples
-- Milk
-- Sugar
+Here it is what it looks like the written toml.
 
-<!--END-->
+```python
+>>> with open("jpg-plugin.toml", "r") as fr:
+...     print(fr.read())
+name = "image-jpg"
+version = "1.0"
+description = "Conversion functions to jpg type." 
+
 ```
 
-A markdown quick-note text always starts with a title. The `<!--BEGIN-->`
-statement accepts any list of key-value attributes that could be represented as
-a string or as an integer.
+### Preserve the in-memory representation of Python dataclasses after reading.
 
-Any quick-note in the markdown document can be easily update or removed thanks
-to the markdown quick-note parser.
+```python
+>>> from pprint import pprint
+>>> @dataclass
+... class Configuration(TomlDataClassIO):
+...     project_name: str
+...     plugin: Plugin
 
-### Toml quick-note
+>>> config = Configuration("image-reader", jpg_plugin)
+>>> with open("config.toml", "w") as fw:
+...     config.write(fw)
 
-A markdown quick-note can be converted to the general purpose toml format. Therefore,
-the markdown quick-notes data can be used in a different markup/render mechanism of 
-choice. 
+>>> with open("config.toml", "r") as fr:
+...     config_from_file = Configuration.read(fr)
+>>> pprint(config_from_file)
+Configuration(project_name='image-reader',
+              plugin=Plugin(name='image-jpg',
+                            version='1.0',
+                            description='Conversion functions to jpg type.'))
 
-The `ingredients.md` above would have the corresponding `ingredients.toml`:
+>>> pprint(f"Plugin name: {config_from_file.plugin.name}")
+'Plugin name: image-jpg'
 
-```toml
-[[list_of_quick_note]]
-id = 0
-date = "2022-12-30T09:07:33.934408"
-title = "2022-12-30T09:07"
-text = "I should remember to buy\n\n- Apples\n- Milk\n - Sugar\n\n"
 ```
 
-## CLI application
+Notice how it differs from the ouptut of the `toml` library.
 
-The CLI application supports the following commands:
+```python
+>>> import toml
+>>> pprint(toml.load("config.toml"))
+{'plugin': {'description': 'Conversion functions to jpg type.',
+            'name': 'image-jpg',
+            'version': '1.0'},
+ 'project_name': 'image-reader'}
 
-- generate-toml: converts a markdown quick-note to toml quick-note.
-- generate-markdown: converts a toml quick-note to markdown quick-note.
-- validate: check if a toml quick-note and a markdown quick-note are equivalent.
-- generate-quick-note: generate a toml quick-note according to a data-layout.
-
-To create toml quick-notes you need to specify a data-layout.
-
-### Data Layout 
-
-A data layout is a python dataclass with support to write and read toml files. The `quick-notes` package comes with a single data layout named: `QuickNote`.
-
-```python   
-@dataclass
-class QuickNote(QuickNoteBase):
-    id: int
-    date: str
 ```
 
-One can extend the `QuickNote` class or create its own. The attributes specified in the data-layout will be automatically
-rendered in both markdown and toml representations of the quick-note.
+### Preserve in-memory representation with toml tables.
 
-```{caution} 
-Instantiate derived classes of QuickNoteBase using keyword arguments only. Otherwise, the attributes
-could be assigned values different from those expected.
+```python
+>>> from danoan.toml_dataclass import TomlTableDataClassIO
+>>> from typing import List
+
+>>> @dataclass
+... class PluginTable(TomlTableDataClassIO):
+...     list_of_plugins: List[Plugin]
+
+>>> png_plugin = Plugin("image-png", "1.0", "Conversion functions to png type.")
+>>> plugin_table = PluginTable([jpg_plugin, png_plugin])
+>>> with open("plugin-table.toml", "w") as fw:
+...     plugin_table.write(fw)
+
+>>> with open("plugin-table.toml", "r") as fr:
+...     plugin_table_from_file = PluginTable.read(fr)
+>>> pprint(plugin_table_from_file)
+PluginTable(list_of_plugins=[Plugin(name='image-jpg', 
+                                    version='1.0', 
+                                    description='Conversion functions to jpg '
+                                                'type.'), 
+                             Plugin(name='image-png', 
+                                    version='1.0', 
+                                    description='Conversion functions to png '
+                                                'type.')])
+
 ```
 
-## API module   
+Notice how it differs from the ouptut of the `toml` library.
 
-The CLI application relies on the quick-notes api. One can import the module `api` to create new applications using quick-notes.
+```python
+>>> pprint(toml.load("plugin-table.toml"))
+{'list_of_plugins': [{'description': 'Conversion functions to jpg type.',
+                      'name': 'image-jpg',
+                      'version': '1.0'},
+                     {'description': 'Conversion functions to png type.',
+                      'name': 'image-png',
+                      'version': '1.0'}]}
+
+```
+
+Here it is what looks like the written toml.
+
+```python
+>>> with open("plugin-table.toml", "r") as f:
+...     print(f.read())
+[[list_of_plugins]]
+name = "image-jpg"
+version = "1.0"
+description = "Conversion functions to jpg type."
+<BLANKLINE>
+[[list_of_plugins]]
+name = "image-png"
+version = "1.0"
+description = "Conversion functions to png type."
+<BLANKLINE>
+<BLANKLINE>
+
+```
 
