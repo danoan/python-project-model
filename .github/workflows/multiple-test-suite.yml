@@ -16,9 +16,3 @@ jobs:
     with:
       python_version: ${{ matrix.python.version }}
       toxenv: ${{ matrix.python.toxenv }}
-  build-documentation:
-    permissions:
-      contents: write
-    needs: [test-suite]
-    uses: ./.github/workflows/build-documentation.yml
-
