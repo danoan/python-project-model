@@ -75,6 +75,7 @@ source = [
 show_missing = true
 skip_covered = true
 omit = []
+fail_under = 90
 
 
 # -------------------- code formatting --------------------
