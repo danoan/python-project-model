@@ -1,0 +1,15 @@
+{
+    "package_distribution_name": "super-duper-package",
+    "package_import_name": "{{cookiecutter.package_distribution_name.lower().replace('-','_')}}",
+    "package_name": "{{cookiecutter.package_distribution_name.replace('-',' ').title()}}",
+    "package_description": "This is a super duper package.",
+    "package_license": [
+        "MIT license",
+        "BSD license",
+        "Apache Software License 2.0",
+        "GNU General Public License v3"
+    ],
+    "package_author_name": "Daniel Martins Antunes",
+    "package_author_email": "danoan2008@gmail.com",
+    "package_author_github_user": "danoan"
+}

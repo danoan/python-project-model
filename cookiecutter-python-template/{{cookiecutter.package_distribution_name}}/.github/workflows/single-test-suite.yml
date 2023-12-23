@@ -1,0 +1,57 @@
+name: Single Environment Test suite
+
+on:
+  workflow_call:
+    inputs:
+      python_version:
+        required: true
+        type: string
+      toxenv:
+        required: true
+        type: string
+
+
+jobs:
+  check-formatting:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+          python-version: {% raw %}${{ inputs.python_version }}{% endraw %}
+          cache: "pip"
+    - name: Install tox
+      run: |
+        python -m pip install --upgrade pip && pip install tox
+    - name: Format check
+      run: |
+        tox -e format
+  check-type:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+          python-version: {% raw %}${{ inputs.python_version }}{% endraw %}
+          cache: "pip"
+    - name: Install tox
+      run: |
+        python -m pip install --upgrade pip && pip install tox
+    - name: Type check
+      run: |
+        tox -e typecheck
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+          python-version: {% raw %}${{ inputs.python_version }}{% endraw %}
+          cache: "pip"
+    - name: Install tox
+      run: |
+        python -m pip install --upgrade pip && pip install tox
+    - name: Run tests
+      run: |
+        tox -e {% raw %}${{ inputs.toxenv }}{% endraw %}
+
