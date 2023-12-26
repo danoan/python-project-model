@@ -35,6 +35,8 @@ Explanation
 .. toctree::
    :maxdepth: 2
 
+   design-and-architecture
+
 
 Indices and tables
 ==================

@@ -14,3 +14,5 @@ Example:
 
 In the example above there are two active development branches: `v0.1.0` and `v0.1.1`.
 
+This project uses [semantic versioning 2.0](https://semver.org/).
+
