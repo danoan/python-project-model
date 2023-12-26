@@ -23,7 +23,7 @@ version = release = PACKAGE_VERSION
 
 # Import read the docs theme
 
-project = 'toml-dataclass'
+project = '{{cookiecutter.package_distribution_name}}'
 copyright = '{% now 'utc', '%Y' %}, {{cookiecutter.package_author_name}}'
 author = '{{cookiecutter.package_author_name}}'
 
