@@ -30,4 +30,3 @@ jobs:
       contents: write
     needs: [test-suite]
     uses: ./.github/workflows/build-documentation.yml
-

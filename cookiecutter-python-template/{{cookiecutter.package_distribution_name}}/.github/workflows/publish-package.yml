@@ -12,7 +12,7 @@ jobs:
   build-documentation:
     permissions:
       contents: write
-    uses: ./.github/workflows/build-documentation.yml 
+    uses: ./.github/workflows/build-documentation.yml
   build-package:
     permissions:
       contents: write
@@ -31,4 +31,3 @@ jobs:
           repository_url: https://test.pypi.org/legacy/
           user: __token__
           password: {% raw %}${{ secrets.PYPI_API_TOKEN }}{% endraw %}
-
