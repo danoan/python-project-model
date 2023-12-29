@@ -77,11 +77,6 @@ omit = []
 fail_under = 90
 
 
-# -------------------- code formatting --------------------
-[tool.black]
-line-length = 100
-
-
 # -------------------- type checking --------------------
 [tool.mypy]
 python_version = 3.8
