@@ -24,7 +24,7 @@ How-to guides
 
    how-to/task-manager
 
-    
+
 Reference guides
 ================
 
@@ -39,7 +39,7 @@ Explanation
 
 .. toctree::
    :maxdepth: 2
-   
+
    design-and-architecture
 
 
