@@ -19,7 +19,7 @@ How-to guides
 
    how-to/
 
-    
+
 Reference guides
 ================
 

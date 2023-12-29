@@ -1,5 +1,5 @@
 :heavy_exclamation_mark: This repository is based on a copy of [toml-dataclassv0.1](https://github.com/danoan/toml-dataclass).
-Its only purpose is to serve as a model of a functional python project with 
+Its only purpose is to serve as a model of a functional python project with
 continuous integration set.
 
 # Getting started with toml_dataclass
@@ -38,7 +38,7 @@ Here it is what it looks like the written toml.
 ...     print(fr.read())
 name = "image-jpg"
 version = "1.0"
-description = "Conversion functions to jpg type." 
+description = "Conversion functions to jpg type."
 
 ```
 
@@ -98,12 +98,12 @@ Notice how it differs from the ouptut of the `toml` library.
 >>> with open("plugin-table.toml", "r") as fr:
 ...     plugin_table_from_file = PluginTable.read(fr)
 >>> pprint(plugin_table_from_file)
-PluginTable(list_of_plugins=[Plugin(name='image-jpg', 
-                                    version='1.0', 
+PluginTable(list_of_plugins=[Plugin(name='image-jpg',
+                                    version='1.0',
                                     description='Conversion functions to jpg '
-                                                'type.'), 
-                             Plugin(name='image-png', 
-                                    version='1.0', 
+                                                'type.'),
+                             Plugin(name='image-png',
+                                    version='1.0',
                                     description='Conversion functions to png '
                                                 'type.')])
 
@@ -140,4 +140,3 @@ description = "Conversion functions to png type."
 <BLANKLINE>
 
 ```
-
