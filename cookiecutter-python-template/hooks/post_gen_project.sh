@@ -7,3 +7,6 @@ ln -s ../docs/contributing.md CONTRIBUTING.md
 rm CODE_OF_CONDUCT.md
 ln -s ../docs/code-of-conduct.md CODE_OF_CONDUCT.md
 popd >/dev/null
+
+rm README.md
+ln -s docs/getting-started.md README.md
