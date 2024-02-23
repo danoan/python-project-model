@@ -33,10 +33,12 @@ author = '{{cookiecutter.package_author_name}}'
 extensions = [
     "sphinx.ext.autodoc",  # Collect docstrings
     "sphinx.ext.autodoc.typehints",  # Use typehints
+    "sphinx.ext.autosummary",  # Used to create a short TOC for the reference documentation
     "sphinx.ext.napoleon",  # NumPy and Google docstring format
     "sphinx.ext.viewcode",  # Source code link at function, class, module documentation
     "sphinx_rtd_theme",  # Read the docs theme,
-    "myst_parser"  # Markdown flavour. Allow type-hints constructions.
+    "myst_parser",  # Markdown flavour. Allow type-hints constructions.
+    "sphinxcontrib.mermaid",  # Mermaid diagrams.
 ]
 
 source_suffix = {
