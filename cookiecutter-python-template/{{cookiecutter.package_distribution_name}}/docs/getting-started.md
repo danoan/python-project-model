@@ -10,4 +10,4 @@
 
 ## Contributing
 
-Please reference to our [contribution](http://github.com/{{cookiecutter.package_author_github_user}}/{{cookiecutter.package_distribution_name}}/docs/contributing.md) and [code-of-conduct]((http://github.com/{{cookiecutter.package_author_github_user}}/{{cookiecutter.package_distribution_name}}/docs/code-of-conduct.md)) guidelines.
+Please reference to our [contribution](http://danoan.github.io/{{cookiecutter.package_distribution_name}}/contributing) and [code-of-conduct]((http://danoan.github.io/{{cookiecutter.package_distribution_name}}/code-of-conduct.md)) guidelines.
