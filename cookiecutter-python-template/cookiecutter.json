@@ -9,6 +9,8 @@
         "Apache Software License 2.0",
         "GNU General Public License v3"
     ],
+    "python_minimum_version": "3.8",
+    "python_maximum_version": "3.12",
     "package_author_name": "Daniel Martins Antunes",
     "package_author_email": "danoan2008@gmail.com",
     "package_author_github_user": "danoan"
